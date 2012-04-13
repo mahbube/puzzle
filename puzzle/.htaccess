@@ -1,0 +1,11 @@
+options -indexes
+
+RewriteEngine On
+
+RewriteRule ^([0-9a-z_.-]+)\.(css|js)$ index.php?req=file&filename=$1&filetype=$2 [NC,L]
+
+RewriteRule ^(.+)\.html$ index.php?req=$1 [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php?req=er404
